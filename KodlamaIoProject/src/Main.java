@@ -43,12 +43,13 @@ public class Main {
         CategoryManager categoryManager = new CategoryManager(new HibernateCategoryDao(), loggers);
         categoryManager.add(category1);
         categoryManager.add(category2);
-        categoryManager.add(category3);
-
-        CourseManager courseManager = new CourseManager(new JdbcCourseDao(), loggers);
-        courseManager.add(course1);
-        courseManager.add(course2);
-        courseManager.add(course3);
+        categoryManager.add(category2);
+//
+//        CourseManager courseManager = new CourseManager(new JdbcCourseDao(), loggers);
+//        courseManager.add(course1);
+//        courseManager.add(course2);
+//        courseManager.add(course3);
+//        courseManager.add(course1);
 
     }
 }

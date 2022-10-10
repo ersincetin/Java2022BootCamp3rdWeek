@@ -15,7 +15,7 @@ public class CategoryManager {
         this.loggerList = loggerList;
     }
 
-    public void add(Category category) {
+    public void add(Category category) throws Exception {
         boolean isTrue = false;
         List<Object> categoryList = iCrudDao.getAllOfItems();
         for (int i = 0; i < categoryList.size(); i++) {
@@ -23,6 +23,16 @@ public class CategoryManager {
                 isTrue = true;
                 break;
             }
+        }
+
+        if(!isTrue) {
+            iCrudDao.add(category);
+            for(ILogger logger:loggerList) {
+                logger.log(category.getName()+ " İsimli Kategori Oluşturuldu.");
+            }
+        }
+        else {
+            throw new Exception("Kategori ismi tekrar edemez");
         }
     }
 
