@@ -52,7 +52,7 @@ public class Main {
         CourseManager courseManager = new CourseManager(new JdbcCourseDao(), loggers);
         courseManager.add(course1);
         courseManager.add(course2);
-        courseManager.add(course3);
+        //courseManager.add(course3);
         /*Bu kısmı eklediğimizde exception fırlatılır*/
 //        courseManager.add(course2);
 
