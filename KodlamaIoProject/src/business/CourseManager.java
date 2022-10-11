@@ -20,10 +20,12 @@ public class CourseManager {
 
     public void add(Course course) throws Exception {
         boolean isTrue = false;
-        for (Object courseItem : courseList) {
-            if (courseItem.equals(course)) {
-                isTrue = true;
-                break;
+        for (Object courseItems : courseList) {
+            for (Object item:(List)courseItems){
+                if (item.equals(course)) {
+                    isTrue = true;
+                    break;
+                }
             }
         }
         if (course.getPrice() < 0) {

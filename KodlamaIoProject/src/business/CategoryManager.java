@@ -19,10 +19,12 @@ public class CategoryManager {
 
     public void add(Category category) throws Exception {
         boolean isTrue = false;
-        for (Object categoryItem : categoryList) {
-            if (categoryItem.equals(category)) {
-                isTrue = true;
-                break;
+        for (Object categoryItems : categoryList) {
+            for (Object item : (List) categoryItems) {
+                if (item.equals(category)) {
+                    isTrue = true;
+                    break;
+                }
             }
         }
         if (!isTrue) {

@@ -28,7 +28,7 @@ public class Main {
 
         Course course1 = new Course(1, "Java ile Programlama Öğreniyorum", 250, category2, instructor1);
         Course course2 = new Course(2, "C# ile Programlama Öğreniyorum", 125, category2, instructor1);
-        Course course3 = new Course(3, "MySQL ile Veritabanı Öğreniyorum", 100, category3, instructor1);
+        //Course course3 = new Course(3, "MySQL ile Veritabanı Öğreniyorum", -1, category3, instructor1);
 
         List<ILogger> loggers = new ArrayList<>();
         loggers.add(new DatabaseLogger());
@@ -45,14 +45,16 @@ public class Main {
         CategoryManager categoryManager = new CategoryManager(new HibernateCategoryDao(), loggers);
         categoryManager.add(category1);
         categoryManager.add(category2);
-        categoryManager.add(category2);
+        /*Bunu eklediğimizde exception fırlatır*/
+//        categoryManager.add(category2);
 
         System.out.println("\n******* Course Operation Field******************************");
         CourseManager courseManager = new CourseManager(new JdbcCourseDao(), loggers);
         courseManager.add(course1);
+        courseManager.add(course2);
+        courseManager.add(course3);
+        /*Bu kısmı eklediğimizde exception fırlatılır*/
 //        courseManager.add(course2);
-//        courseManager.add(course3);
-//        courseManager.add(course1);
 
     }
 }
