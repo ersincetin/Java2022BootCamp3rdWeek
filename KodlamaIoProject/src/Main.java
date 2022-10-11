@@ -35,18 +35,21 @@ public class Main {
         loggers.add(new FileLogger());
         //loggers.add(new SmsLogger());
 
+        System.out.println("******* Instructor Operation Field******************************");
         InstructorManager instructorManager1 = new InstructorManager(new HibernateInstructorDao(), loggers);
         instructorManager1.add(instructor1);
         InstructorManager instructorManager2 = new InstructorManager(new JdbcInstructorDao(), loggers);
         instructorManager2.add(instructor2);
 
+        System.out.println("\n******* Category Operation Field******************************");
         CategoryManager categoryManager = new CategoryManager(new HibernateCategoryDao(), loggers);
         categoryManager.add(category1);
         categoryManager.add(category2);
         categoryManager.add(category2);
-//
-//        CourseManager courseManager = new CourseManager(new JdbcCourseDao(), loggers);
-//        courseManager.add(course1);
+
+        System.out.println("\n******* Course Operation Field******************************");
+        CourseManager courseManager = new CourseManager(new JdbcCourseDao(), loggers);
+        courseManager.add(course1);
 //        courseManager.add(course2);
 //        courseManager.add(course3);
 //        courseManager.add(course1);

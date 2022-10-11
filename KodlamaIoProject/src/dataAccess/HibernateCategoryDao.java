@@ -35,9 +35,9 @@ public class HibernateCategoryDao implements ICrudDao{
         throw new Exception("Kategori Bulunamadı");
     }
 
-    @Override
     public List<Object> getAllOfItems() {
-        System.out.println("Hibernate ile Kategori Listesi getirildi");
+        System.out.println("** Hibernate ile Kategori Listesi getirildi");
+        System.out.println(categoryList.size());
         return Collections.singletonList(this.categoryList);
     }
 }

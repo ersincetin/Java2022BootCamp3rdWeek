@@ -9,44 +9,43 @@ import java.util.List;
 public class CategoryManager {
     private ICrudDao iCrudDao;
     private List<ILogger> loggerList;
+    private List<Object> categoryList;
 
     public CategoryManager(ICrudDao iCrudDao, List<ILogger> loggerList) {
         this.iCrudDao = iCrudDao;
         this.loggerList = loggerList;
+        this.categoryList = iCrudDao.getAllOfItems();
     }
 
     public void add(Category category) throws Exception {
         boolean isTrue = false;
-        List<Object> categoryList = iCrudDao.getAllOfItems();
-        for (int i = 0; i < categoryList.size(); i++) {
-            if (categoryList.get(i).equals(category)) {
+        for (Object categoryItem : categoryList) {
+            if (categoryItem.equals(category)) {
                 isTrue = true;
                 break;
             }
         }
-
-        if(!isTrue) {
+        if (!isTrue) {
             iCrudDao.add(category);
-            for(ILogger logger:loggerList) {
-                logger.log(category.getName()+ " İsimli Kategori Oluşturuldu.");
+            for (ILogger logger : loggerList) {
+                logger.log(category.getName() + " İsimli Kategori Oluşturuldu.");
             }
-        }
-        else {
+        } else {
             throw new Exception("Kategori ismi tekrar edemez");
         }
     }
 
-    public void update(Category category){
+    public void update(Category category) {
         iCrudDao.update(category);
-        for(ILogger logger:loggerList) {
-            logger.log(category.getName()+ " İsimli Kategori Güncellendi.");
+        for (ILogger logger : loggerList) {
+            logger.log(category.getName() + " İsimli Kategori Güncellendi.");
         }
     }
 
-    public void delete(Category category){
+    public void delete(Category category) {
         iCrudDao.delete(category);
-        for(ILogger logger:loggerList) {
-            logger.log(category.getName()+ " İsimli Kategori Silindi.");
+        for (ILogger logger : loggerList) {
+            logger.log(category.getName() + " İsimli Kategori Silindi.");
         }
     }
 }

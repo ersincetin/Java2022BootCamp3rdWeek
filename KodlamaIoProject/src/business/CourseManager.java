@@ -10,17 +10,18 @@ public class CourseManager {
 
     private List<ILogger> loggerList;
     private ICrudDao iCrudDao;
+    private List<Object> courseList;
 
     public CourseManager(ICrudDao iCrudDao, List<ILogger> loggerList) {
         this.loggerList = loggerList;
         this.iCrudDao = iCrudDao;
+        this.courseList = iCrudDao.getAllOfItems();
     }
 
     public void add(Course course) throws Exception {
         boolean isTrue = false;
-        List<Object> courseList = iCrudDao.getAllOfItems();
-        for (int i = 0; i < courseList.size(); i++) {
-            if (courseList.get(i).equals(course)) {
+        for (Object courseItem : courseList) {
+            if (courseItem.equals(course)) {
                 isTrue = true;
                 break;
             }

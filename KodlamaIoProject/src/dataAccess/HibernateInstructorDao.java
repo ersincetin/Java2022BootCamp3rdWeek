@@ -27,7 +27,7 @@ public class HibernateInstructorDao implements ICrudDao {
 
     @Override
     public Instructor getByItem(int index) throws Exception {
-        System.out.println("Hibernate ile getirildi");
+        System.out.println("Hibernate ile Eğitmen getirildi");
         for (Instructor instructor : this.instructorList) {
             if (instructor.getId() == index) {
                 return instructor;
@@ -38,7 +38,7 @@ public class HibernateInstructorDao implements ICrudDao {
 
     @Override
     public List<Object> getAllOfItems() {
-        System.out.println("Hibernate ile getirildi");
+        System.out.println("Hibernate ile Eğitmenler getirildi");
         return Collections.singletonList(this.instructorList);
     }
 }

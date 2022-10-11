@@ -38,7 +38,7 @@ public class JdbcInstructorDao implements ICrudDao {
 
     @Override
     public List<Object> getAllOfItems() {
-        System.out.println("JDBC ile getirildi");
+        System.out.println("JDBC ile Eğitimciler getirildi");
         return Collections.singletonList(this.instructorList);
     }
 }
